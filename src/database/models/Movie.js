@@ -16,6 +16,9 @@ module.exports = (sequelize, DataTypes) => {
     release_date: {
       type: DataTypes.DATE,
     },
+    length:{
+      type: DataTypes.INTEGER
+    }
   };
 
   let config = {
