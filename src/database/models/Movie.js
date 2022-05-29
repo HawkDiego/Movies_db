@@ -1,28 +1,28 @@
-const { DataTypes, Sequelize } = require("sequelize");
-const sequelize = new Sequelize("sqlite::memory:");
+module.exports = (sequelize, DataTypes) => {
+  let cols = {
+    id: {
+      type: DataTypes.INTEGER,
+      primaryKey: true,
+    },
+    title: {
+      type: DataTypes.STRING(500),
+    },
+    rating: {
+      type: DataTypes.DECIMAL(3, 1),
+    },
+    awards: {
+      type: DataTypes.INTEGER,
+    },
+    release_date: {
+      type: DataTypes.DATE,
+    },
+  };
 
-let cols = {
-  id: {
-    type: DataTypes.INTEGER,
-    autoIncrement: true,
-  },
-  title: {
-    type: DataTypes.STRING(500),
-  },
-  rating: {
-    type: DataTypes.DECIMAL(3, 1),
-  },
-  awards: {
-    type: DataTypes.INTEGER,
-  },
-  relase_date: {
-    type: DataTypes.DATE,
-  },
-};
-
-let config = {
+  let config = {
     tableName: "movies",
-    timestamps: false
-}
+    timestamps: false,
+  };
 
-const Movies = sequelize.define('Movie', cols, config);
+  const Movie = sequelize.define("Movie", cols, config);
+  return Movie;
+};
