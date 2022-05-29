@@ -19,6 +19,17 @@ const controller = {
         console.log(e);
       });
   },
+  new: (req, res) => {
+    db.Movie.findAll({
+      order: [["release_date", "DESC"]],
+    })
+      .then((movies) => {
+        return res.render("newestMovies", { movies });
+      })
+      .catch((e) => {
+        console.log(e);
+      });
+  },
 };
 
 module.exports = controller;
