@@ -16,10 +16,10 @@ module.exports = (sequelize, DataTypes) => {
   };
 
   let config = {
-    tableName: "actors",
+    tableName: "genres",
     timestamps: false,
   };
 
-  const Actor = sequelize.define("Actor", cols, config);
-  return Actor;
+  const Genre = sequelize.define("Genre", cols, config);
+  return Genre;
 };
