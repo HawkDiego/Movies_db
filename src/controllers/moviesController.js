@@ -45,6 +45,20 @@ const controller = {
         console.log(e);
       });
   },
+  add: (req, res) => {
+    res.render("moviesAdd");
+  },
+  create: (req, res) => {
+    db.Movie.create({
+      ...req.body,
+    })
+      .then((resultado) => {
+        res.redirect("/movies");
+      })
+      .catch((e) => {
+        console.log(e);
+      });
+  },
 };
 
 module.exports = controller;
