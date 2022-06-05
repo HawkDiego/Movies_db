@@ -59,6 +59,29 @@ const controller = {
         console.log(e);
       });
   },
+  edit: (req, res) => {
+    db.Movie.findByPk(req.params.id).then((Movie) => {
+      return res.render("moviesEdit", { Movie });
+    });
+  },
+  update: (req, res) => {
+    db.Movie.update(
+      {
+        ...req.body,
+      },
+      {
+        where: {
+          id: req.params.id,
+        },
+      }
+    )
+      .then((resultado) => {
+        return res.redirect("/movies/");
+      })
+      .catch((e) => {
+        return console.log(e);
+      });
+  },
 };
 
 module.exports = controller;
